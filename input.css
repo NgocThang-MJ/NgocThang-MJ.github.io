@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .key {
+    @apply flex items-center justify-center text-center p-3 rounded-full text-xl w-16 h-16 text-slate-700 dark:text-slate-50 cursor-pointer;
+  }
+  .operator {
+    @apply text-emerald-600 dark:text-emerald-600 dark:bg-white;
+  }
+  .operator-container {
+    @apply bg-slate-200;
+  }
+  .x {
+    @apply dark:bg-gray-500;
+  }
+  .glossy-layer {
+    position: relative;
+  }
+  .glossy-layer:after {
+    content: "";
+    position: absolute;
+    background-color: #dbdbdb;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    transition: 0.1s;
+    opacity: 0%;
+  }
+  .glossy-layer:hover:after {
+    opacity: 20%;
+  }
+  .glossy-layer:before {
+    content: "";
+    position: absolute;
+    background-image: radial-gradient(#dbdbdb, #ededed, #fff);
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    transition: 0.05s;
+    opacity: 10%;
+  }
+  .glossy-layer:active:before {
+    opacity: 30%;
+  }
+}
+
+.hidden {
+  display: none;
+}
