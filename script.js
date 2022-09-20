@@ -5,6 +5,7 @@ const dot = document.querySelector(".dot");
 const deleteBtn = document.querySelector(".delete");
 const operators = document.querySelectorAll(".operator");
 const equal = document.querySelector(".equal");
+const reverse = document.querySelector(".reverse");
 
 let currentOperator = "";
 let prevOperand = "";
@@ -81,7 +82,6 @@ operators.forEach((operator) => {
           display.innerText = currOperand;
         }
         return;
-        break;
       case "/":
         currentOperator = "/";
         break;
@@ -97,7 +97,6 @@ operators.forEach((operator) => {
 
       default:
         return;
-        break;
     }
     if (prevOperand === "") prevOperand = currOperand;
     currOperand = "";
@@ -112,6 +111,10 @@ AC.addEventListener("click", () => {
 });
 
 dot.addEventListener("click", () => {
+  if (currOperand === "" && display.innerText === "0") {
+    currOperand = "0.";
+    display.innerText = currOperand;
+  }
   if (currOperand.includes(".")) return;
   currOperand += ".";
   display.innerText = currOperand;
@@ -131,4 +134,14 @@ equal.addEventListener("click", () => {
   compute(currentOperator);
   currentOperator = "";
   prevOperand = "";
+});
+
+reverse.addEventListener("click", () => {
+  if (currOperand === "") return;
+  if (currOperand.includes("-")) {
+    currOperand = currOperand.slice(1);
+  } else {
+    currOperand = "-" + currOperand;
+  }
+  display.innerText = currOperand;
 });
